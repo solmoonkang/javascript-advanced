@@ -145,6 +145,23 @@ console.log(mapObject(a => a + 10, { a: 1, b: 2, c: 3 }));
 console.clear();
 </script>
 
+7. pick
+
+<script>
+const obj2 = { a: 1, b: 2, c: 3, d: 4, e: 5 };
+
+const pick = (ks, obj) => _.go(
+  ks,
+  L.map(k => [k, obj[k]]),
+  L.reject(([k, v]) => v === undefined),
+  object);
+
+console.log(pick(['b', 'c', 'z'], obj2));
+// { b: 2, c: 3 }
+console.clear();
+</script>
+
+
 
 </body>
 </html>
