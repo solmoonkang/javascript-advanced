@@ -16,6 +16,28 @@ const obj1 = {
     d: 4
 };
 </script>
+
+1. values
+
+<script>
+console.log(Object.values(obj1));
+
+L.values = function *(obj) {
+  for (const k in obj) {
+    yield obj[k];
+  }
+};
+
+_.go(
+  obj1,
+  L.values,
+  L.map(a => a + 10),
+  L.take(2),
+  _.reduce((a, b) => a + b),
+  console.log);
+
+console.clear();
+</script>
     
 
 </body>
