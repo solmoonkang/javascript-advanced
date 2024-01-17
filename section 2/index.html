@@ -53,7 +53,7 @@ console.log(
 console.clear();
 </script>
 
-3. query, queryToObject
+3. query
 
 <script>
 const obj1 = {
@@ -86,10 +86,6 @@ function query2(obj) {
 }
 console.log(query2(obj1));
 
-
-
-
-
 const join = _.curry((sep, iter) =>
   _.reduce((a, b) => `${a}${sep}${b}`, iter));
 
@@ -115,6 +111,20 @@ const query5 = _.pipe(
 
 console.log(query5(obj1));
 console.clear();
+</script>
+
+4. queryToObject
+
+<script>
+const split = _.curry((sep, str) => str.split(sep));
+
+const queryToObject = _.pipe(
+  split('&'),
+  L.map(split('=')),
+  L.map(([k, v]) => ({ [k]: v })),
+  _.reduce(Object.assign));
+
+console.log(queryToObject('a=1&c=CC&d=DD'));
 </script>
 
 </body>
