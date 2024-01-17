@@ -161,7 +161,25 @@ console.log(pick(['b', 'c', 'z'], obj2));
 console.clear();
 </script>
 
+8. indexBy
 
+<script>
+const users = [
+  { id: 5, name: 'AA', age: 35 },
+  { id: 10, name: 'BB', age: 26 },
+  { id: 19, name: 'CC', age: 28 },
+  { id: 23, name: 'CC', age: 34 },
+  { id: 24, name: 'EE', age: 23 }
+];
+
+_.indexBy = (f, iter) =>
+  _.reduce((obj, a) => (obj[f(a)] = a, obj), {}, iter);
+
+const users2 = _.indexBy(u => u.id, users);
+
+console.log(users2);
+
+</script>
 
 </body>
 </html>
