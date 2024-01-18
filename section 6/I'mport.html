@@ -12,13 +12,38 @@
 4. 아임포트 결제 누락 스케쥴러 만들기
 ----------------------------------------------------
 4-1. 아임포트 결제 누락 스케쥴러 - API 설명 ⭕️
-4-2. 아임포트 결제 누락 스케쥴러 - 결제된 내역 가져오기
+4-2. 아임포트 결제 누락 스케쥴러 - 결제된 내역 가져오기 ⭕️
 4-3. 아임포트 결제 누락 스케쥴러 - 가맹점 DB의 주문서 가져오기
 4-4. 아임포트 결제 누락 스케쥴러 - 비교 후 결제 취소 API 실행하기
 4-5. 아임포트 결제 누락 스케쥴러 - 반복 실행하기
 
 <script>
-
+const Impt = {
+  payments: {
+    1: [
+      { imp_id: 11, order_id: 1, amount: 15000 },
+      { imp_id: 12, order_id: 2, amount: 25000 },
+      { imp_id: 13, order_id: 3, amount: 10000 }
+    ],
+    2: [
+      { imp_id: 14, order_id: 4, amount: 25000 },
+      { imp_id: 15, order_id: 5, amount: 45000 },
+      { imp_id: 16, order_id: 6, amount: 15000 }
+    ],
+    3: [
+      { imp_id: 17, order_id: 7, amount: 20000 },
+      { imp_id: 18, order_id: 8, amount: 30000 }
+    ],
+    4: [],
+    5: [],
+    //...
+  },
+  getPayments: page => {
+    console.log(`http://..?page=${page}`);
+    return _.delay(1000 * 1, Impt.payments[page]);
+  },
+  cancelPayment: imp_id => Promise.resolve(`${imp_id}: 취소완료`)
+};
 </script>
 
 </body>
