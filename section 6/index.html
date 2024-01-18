@@ -26,7 +26,26 @@ _.go(
   _.each(console.log));
 </script>
 
+2. takeWhile, takeUntil
 
+<script>
+_.go(
+  [1, 2, 3, 4, 5, 6, 7, 8, 0, 0, 0],
+  L.takeWhile(a => a),
+  _.each(console.log));
+
+_.go(
+  [1, 2, 3, 4, 5, 6, 7, 8, 0, 0, 0],
+  L.takeUntil(a => a),
+  _.each(console.log));
+
+_.go(
+  [0, false, undefined, null, 10, 20, 30],
+  L.takeUntil(a => a),
+  _.each(console.log));
+
+console.clear();
+</script>
 
 
 
