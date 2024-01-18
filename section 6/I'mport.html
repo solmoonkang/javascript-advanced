@@ -44,6 +44,14 @@ const Impt = {
   },
   cancelPayment: imp_id => Promise.resolve(`${imp_id}: 취소완료`)
 };
+
+const DB = {
+  getOrders: ids => _.delay(100, [
+    { id: 1 },
+    { id: 3 },
+    { id: 7 }
+  ])
+};
 </script>
 
 </body>
