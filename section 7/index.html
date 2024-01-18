@@ -324,6 +324,16 @@ Images.tmpl = imgs => `
   </div>
 `;
 
+Images.loader = limit => _.tap(
+  $.findAll('img'),
+  L.map(img => _ => new Promise(resolve => {
+    img.onload = () => resolve(img);
+    img.src = img.getAttribute('lazy-src');
+  })),
+  C.takeAllWithLimit(limit),
+  _.each(_.each($.addClass('fade-in')))
+);
+
 _.go(
   Images.fetch(),
   Images.tmpl,
